@@ -3,9 +3,9 @@ import React, { Suspense } from "react";
 
 import { GlobalStyle } from "./styles/GlobalStyle";
 
-import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+import Home from "./pages/Home/Home";
+import Projects from "./pages/Projects/Projects";
+import Contact from "./pages/Contact/Contact";
 import NavbarDefault from "./components/Navbar/NavbarDefault";
 
 const App: React.FC = () => {
