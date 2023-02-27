@@ -1,22 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Projects: React.FC = () => {
-	return (
-		<Main>
-			<TestComp />
-		</Main>
-	);
+	return <Main id={"projects"}></Main>;
 };
 
-const Main = styled.section`
-	height: fit-content;
-	background: #00ff44;
-`;
-
-const TestComp = styled.div`
-	height: 100vh;
-	background: #0f4354;
+const Main = styled(motion.section)`
+	min-height: 100vh;
+	background: var(--palette-purple-3);
 `;
 
 export default Projects;
