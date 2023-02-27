@@ -29,11 +29,7 @@ const NavbarDefault: React.FC = () => {
 				<ButtonNavbarMenu />
 
 				{toggleMenu && (
-					<Navbar
-						// {...motionPropsDefault}
-						variants={_MotionVariants.Navbar}
-						// animate={toggleMenu ? "toggledOn" : "toggledOff"}
-					>
+					<Navbar variants={_MotionVariants.Navbar} style={{}}>
 						<ButtonNavbarDefault destination={"home"}>Home</ButtonNavbarDefault>
 						<ButtonNavbarDefault destination={"projects"}>Projects</ButtonNavbarDefault>
 						<ButtonNavbarDefault destination={"contact"}>Contact</ButtonNavbarDefault>
