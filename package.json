@@ -7,18 +7,20 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"install-deps": "yarn add framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
+		"install-deps": "yarn add react-icons react-scroll @types/react-scroll framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
 	},
 	"dependencies": {
-		"@types/react-redux": "^7.1.25",
+		"@reduxjs/toolkit": "^1.9.3",
 		"@types/react-router-dom": "^5.3.3",
+		"@types/react-scroll": "^1.8.6",
 		"@types/styled-components": "^5.1.26",
 		"framer-motion": "^10.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-icons": "^4.7.1",
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.8.1",
-		"redux": "^4.2.1",
+		"react-scroll": "^1.8.9",
 		"styled-components": "^5.3.6"
 	},
 	"devDependencies": {
