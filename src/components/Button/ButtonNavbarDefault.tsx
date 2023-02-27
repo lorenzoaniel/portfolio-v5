@@ -48,7 +48,7 @@ const Text = styled.h1`
 	background: var(--glass-white-dark);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	text-shadow: 0 0.1rem 0.1rem var(--glass-white-medium);
+	text-shadow: 0 0.1rem 0.1rem var(--glass-white-light);
 	filter: drop-shadow(0 0.1rem 0.1rem rgba(255, 255, 255, 0.5));
 
 	transform: skew(-20deg);
