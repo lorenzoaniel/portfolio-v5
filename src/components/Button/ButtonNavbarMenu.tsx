@@ -42,8 +42,8 @@ const Main = styled(motion.button)`
 const ArrowStyle = {
 	height: "100%",
 	width: "100%",
-	fill: "var(--glass-white-medium)",
-	filter: "drop-shadow(0 0.1rem 0.3rem rgba(255, 255, 255, 0.8))",
+	fill: "var(--palette-color-darkest)",
+	filter: "drop-shadow(0 0.1rem 0.5rem var(--palette-color-dark)",
 };
 
 export default ButtonNavbarLogo;
