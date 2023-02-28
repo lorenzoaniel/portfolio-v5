@@ -45,11 +45,11 @@ const Main = styled(motion.button)`
 `;
 
 const Text = styled.h1`
-	background: var(--glass-white-dark);
+	background: var(--palette-color-darkest);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	text-shadow: 0 0.1rem 0.1rem var(--glass-white-light);
-	filter: drop-shadow(0 0.1rem 0.1rem rgba(255, 255, 255, 0.5));
+	text-shadow: 0 0.1rem 0.1rem var(--palette-color-darkest);
+	filter: drop-shadow(0 0.1rem 0.1rem var(--palette-color-dark));
 
 	transform: skew(-20deg);
 
