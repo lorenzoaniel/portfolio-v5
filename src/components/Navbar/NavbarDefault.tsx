@@ -56,6 +56,7 @@ const Main = styled(motion.nav)`
 
 	background: transparent;
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(1rem);
 
 	top: 0;
 	bottom: 0;
