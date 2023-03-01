@@ -7,8 +7,8 @@ const Projects: React.FC = () => {
 };
 
 const Main = styled(motion.section)`
-	min-height: 100vh;
-	background: var(--palette-purple-2);
+	height: 100rem;
+	background: transparent;
 `;
 
 export default Projects;
