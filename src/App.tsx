@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
 import Contact from "./pages/Contact/Contact";
 import NavbarDefault from "./components/Navbar/NavbarDefault";
-import ParallaxHome from "./components/AnimatedBackground/ParallaxHome";
+import ParallaxCheckerPattern from "./components/AnimatedBackground/ParallaxCheckerPattern";
 import { useScroll } from "framer-motion";
 
 const App: React.FC = () => {
@@ -18,15 +18,16 @@ const App: React.FC = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<Main id={"App"}>
-				<ParallaxHome scrollY={scrollYProgress} />
-				<NavbarDefault />
-				<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Main id={"App"}>
+					<ParallaxCheckerPattern scrollY={scrollYProgress} />
+					<NavbarDefault />
+
 					<Home />
 					<Projects />
 					<Contact />
-				</Suspense>
-			</Main>
+				</Main>
+			</Suspense>
 		</>
 	);
 };
