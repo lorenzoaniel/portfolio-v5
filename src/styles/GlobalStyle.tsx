@@ -7,15 +7,14 @@ export const GlobalStyle = createGlobalStyle`
         @@@@@@@@@@@ 
       */
 
-      --scrollbarThumb-Purple: #7600a0;
-      --scrollbar-Purple: #bb00ff;
+      --scrollbarThumb-color: rgb(113, 201, 206);
+      --scrollbar-color: rgb(227, 253, 253);
 
-      --palette-purple-1: #280037;
-      --palette-purple-2: #42005a;
-      --palette-purple-3: #5c007d;
-      --palette-purple-4: #73009d;
-      --palette-purple-5: #8c00bf;
-      --palette-purple-6: #a800e6;
+      --palette-color-light: rgb(227, 253, 253);
+      --palette-color-medium: rgb(203, 241, 245);
+      --palette-color-dark: rgb(166, 227, 233);
+      --palette-color-darkest: rgb(113, 201, 206);
+
 
       --glass-white-light: rgba(255, 255, 255, 0.2);
       --glass-white-medium: rgba(255, 255, 255, 0.5);
@@ -38,6 +37,9 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
       font-family: 'Roboto';
       font-size: clamp(1.6rem, 5vw, 3.5rem);
+      z-index: 0;
+	    backface-visibility: hidden;
+
 
       /* Hide scrollbar for Firefox */
       scrollbar-width: thin;
@@ -45,31 +47,30 @@ export const GlobalStyle = createGlobalStyle`
 
       /* Hide scrollbar for Chrome and Edge */
       &::-webkit-scrollbar {
-        background-color: var(--scrollbar-Purple);
+        background-color: var(--scrollbar-color);
         width: 0.8rem;
         height: 0.8rem;
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: var(--scrollbarThumb-Purple);
+        background-color: var(--scrollbarThumb-color);
         border-radius: 0.4rem;
       }
   }
 
   html {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     font-size: 62.5%;
+    overflow-x: hidden;
 
     body{
-      height: 100%;
-      width: 100%;
+      height: inherit;
+      width: inherit;
 
       #root {
         height: inherit;
         width: inherit;
-
-        background: red;
         font-size: 1.6rem;
       }
     }
