@@ -1,43 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MotionValue, motion, useTransform } from "framer-motion";
+
 import { createCheckerPattern } from "../../helpers/nonHooks/createCheckerPatter";
+
 import useCurrentDimension from "../../helpers/hooks/useCurrDimension";
+import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
 
 interface Props {
 	scrollY: MotionValue<number>; //useTransform pairing
 }
 
 const ParallaxCheckerPattern: React.FC<Props> = ({ scrollY }) => {
-	const [diamonds, setDiamonds] = useState<React.ReactNode[]>();
-	// let currWinSize = useCurrentDimension();
+	const [squares, setSquares] = useState<React.ReactNode[]>();
+	const rotate = useTransform(scrollY, [0.1, 1], [0, 360]);
+	let currWinSize = useCurrentDimension();
 
-	// let percentage = currWinSize.width / currWinSize.height;
-	// let offset = percentage > 1 ? 2 - percentage : 1 - percentage;
+	//Generating squares
+	useEffect(() => {
+		createSquares();
+	}, [currWinSize]);
 
-	// useEffect(() => {
-	// 	createDiamonds();
-	// }, [currWinSize]);
+	const createSquares = async (): Promise<void> => {
+		console.log("run Squares");
+		const patternObj = await createCheckerPattern("#ParallaxGrid"); //Intensive if resizing frequently so had to async
 
-	const createDiamonds = async (): Promise<void> => {
-		const rotate = useTransform(scrollY, [0.1, 1], [0, 360]);
-		let tempArray = [];
-		const patternObj = await createCheckerPattern("#ParallaxGrid");
-
-		tempArray = patternObj.pattern.map((curr, index) => (
-			<Diamond
-				key={`diamond-${index}`}
-				style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "8vmin" }}
-			/>
-		));
-
-		setDiamonds(tempArray);
+		setSquares(
+			await patternObj.pattern.map((curr, index) => {
+				return (
+					<Square
+						key={`Square-${index}`}
+						style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "8vmin" }} //minWidth is needed so that we dont get some squares with computed width = 0
+					/>
+				);
+			})
+		);
 	};
 
-	//PRE REDNER FUNC RUNS
-	createDiamonds();
-
-	return <Main id={"ParallaxGrid"}>{diamonds}</Main>;
+	return (
+		<Main {...motionPropsDefault} variants={_MotionVariants.Main} id={"ParallaxGrid"}>
+			{squares}
+		</Main>
+	);
 };
 
 const Main = styled(motion.div)`
@@ -54,28 +58,38 @@ const Main = styled(motion.div)`
 	grid-template-rows: repeat(auto-fill, minmax(8vmin, 1fr));
 	justify-content: center;
 	align-items: center;
+
+	z-index: 1; //remove after hover test
 `;
 
 /* 
   SHAPES
 */
 
-const Diamond = styled(motion.div)`
+const Square = styled(motion.div)`
 	position: relative;
 	display: inline-block;
 	height: 100%;
 
 	background: rgba(255, 255, 255, 0.1);
 	box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 1);
+	/* backdrop-filter: blur(5rem); */
+
+	z-index: 1; //remove after hover test
 `;
 
-let _MotionVariants = (variant: string, args: any) => {
-	return {
-		Main: {
-			height: `${args.height}px`,
-			width: `${args.width}px`,
+const _MotionVariants = {
+	Main: {
+		initial: { opacity: 0 },
+		animate: {
+			opacity: 1,
+			transition: {
+				duration: 0.5,
+			},
 		},
-	}[variant];
+		exit: { opacity: 0 },
+	},
+	Square: {},
 };
 
 export default ParallaxCheckerPattern;

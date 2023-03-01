@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useAppSelector } from "../../redux/hooks";
 import { selectNavmenuToggle } from "../../redux/features/navBarToggleSlice";
@@ -20,23 +20,21 @@ const NavbarDefault: React.FC = () => {
 	const toggleMenu = useAppSelector(selectNavmenuToggle);
 
 	return (
-		<AnimatePresence>
-			<Main
-				{...motionPropsDefault}
-				variants={_MotionVariants.Main}
-				animate={toggleMenu ? "toggledOn" : "toggledOff"}
-			>
-				<ButtonNavbarMenu />
+		<Main
+			{...motionPropsDefault}
+			variants={_MotionVariants.Main}
+			animate={toggleMenu ? "toggledOn" : "toggledOff"}
+		>
+			<ButtonNavbarMenu />
 
-				{toggleMenu && (
-					<Navbar variants={_MotionVariants.Navbar} style={{}}>
-						<ButtonNavbarDefault destination={"home"}>Home</ButtonNavbarDefault>
-						<ButtonNavbarDefault destination={"projects"}>Projects</ButtonNavbarDefault>
-						<ButtonNavbarDefault destination={"contact"}>Contact</ButtonNavbarDefault>
-					</Navbar>
-				)}
-			</Main>
-		</AnimatePresence>
+			{toggleMenu && (
+				<Navbar variants={_MotionVariants.Navbar} style={{}}>
+					<ButtonNavbarDefault destination={"home"}>Home</ButtonNavbarDefault>
+					<ButtonNavbarDefault destination={"projects"}>Projects</ButtonNavbarDefault>
+					<ButtonNavbarDefault destination={"contact"}>Contact</ButtonNavbarDefault>
+				</Navbar>
+			)}
+		</Main>
 	);
 };
 
