@@ -58,8 +58,6 @@ const Main = styled(motion.div)`
 	grid-template-rows: repeat(auto-fill, minmax(8vmin, 1fr));
 	justify-content: center;
 	align-items: center;
-
-	z-index: 1; //remove after hover test
 `;
 
 /* 
@@ -73,9 +71,6 @@ const Square = styled(motion.div)`
 
 	background: rgba(255, 255, 255, 0.1);
 	box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 1);
-	/* backdrop-filter: blur(5rem); */
-
-	z-index: 1; //remove after hover test
 `;
 
 const _MotionVariants = {
