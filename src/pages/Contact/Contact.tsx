@@ -7,8 +7,9 @@ const Contact: React.FC = () => {
 };
 
 const Main = styled(motion.section)`
-	min-height: 100vh;
-	background: var(--palette-purple-3);
+	height: 100rem;
+	background: transparent;
+	/* background: var(--palette-color-light); */
 `;
 
 export default Contact;
