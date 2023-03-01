@@ -1,14 +1,13 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
-	const ref = useRef(null);
-	const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
+	console.log("rerender");
 
 	return (
-		<Main id={"home"} ref={ref}>
-			<Test>
+		<Main id={"home"}>
+			{/* <Test>
 				<h1>
 					<code>useScroll</code> demo
 				</h1>
@@ -74,19 +73,19 @@ const Home: React.FC = () => {
 					</p>
 					<p>Quisque convallis ligula non magna efficitur tincidunt.</p>
 				</article>
-			</Test>
+			</Test> */}
 		</Main>
 	);
 };
 
 const Main = styled(motion.section)`
-	min-height: 200vh;
-	background: var(--palette-purple-1);
-	/* padding-top: calc(10vh + 1rem); //takes into account NavbarDefault height and margin */
+	height: 200rem;
+	background: transparent;
+	padding-top: calc(10vh + 1rem); //takes into account NavbarDefault height and margin
 `;
 
 const Test = styled(motion.div)`
-	color: var(--glass-white-light);
+	color: black;
 `;
 
 export default Home;
