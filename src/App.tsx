@@ -1,16 +1,20 @@
 import styled from "styled-components";
-import React, { Suspense, createContext } from "react";
+import React, { Suspense, createContext, lazy } from "react";
 
 import { GlobalStyle } from "./styles/GlobalStyle";
 
-import Home from "./pages/Home/Home";
-import Projects from "./pages/Projects/Projects";
-import Contact from "./pages/Contact/Contact";
+// import Home from "./pages/Home/Home";
+// import Projects from "./pages/Projects/Projects";
+// import Contact from "./pages/Contact/Contact";
 import NavbarDefault from "./components/Navbar/NavbarDefault";
 import ParallaxCheckerPattern from "./components/AnimatedBackground/ParallaxCheckerPattern";
 import { AnimatePresence, MotionValue, useScroll } from "framer-motion";
 
 export const scrollYContext = createContext(new MotionValue<number>());
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const Projects = lazy(() => import("./pages/Projects/Projects"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 const App: React.FC = () => {
 	const { scrollYProgress } = useScroll({ offset: ["start end", "end end"] });
@@ -21,7 +25,7 @@ const App: React.FC = () => {
 			<GlobalStyle />
 			<Suspense fallback={<div>Loading...</div>}>
 				<scrollYContext.Provider value={scrollYProgress}>
-					<AnimatePresence>
+					<AnimatePresence mode={"wait"}>
 						<Main id={"App"}>
 							<ParallaxCheckerPattern />
 							<NavbarDefault />
@@ -44,6 +48,8 @@ const Main = styled.section`
 	display: flex;
 	flex-direction: column;
 	z-index: -99;
+
+	transition: all 0.3s ease;
 `;
 
 export default App;
