@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import HeroHeading from "../../components/Heading/HeroHeading";
 
 const Home: React.FC = () => {
-	console.log("rerender");
-
 	return (
 		<Main id={"home"}>
 			<HeroHeading title={"Hi, my name is Lorenzo"} />
