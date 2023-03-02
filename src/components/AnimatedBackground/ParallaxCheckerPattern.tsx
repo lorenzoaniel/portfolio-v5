@@ -20,7 +20,6 @@ const ParallaxCheckerPattern: React.FC = () => {
 	}, [currWinSize]);
 
 	const createSquares = async (): Promise<void> => {
-		console.log("run Squares");
 		const patternObj = await createCheckerPattern("#ParallaxGrid"); //Intensive if resizing frequently so had to async
 
 		setSquares(
@@ -28,7 +27,7 @@ const ParallaxCheckerPattern: React.FC = () => {
 				return (
 					<Square
 						key={`Square-${index}`}
-						style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "8vmin" }} //minWidth is needed so that we dont get some squares with computed width = 0
+						style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "8vmin", minHeight: "8vmin" }} //minWidth minHeight is needed so that we dont get some squares with computed width/height = 0
 					/>
 				);
 			})
