@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
       z-index: 0;
 	    backface-visibility: hidden;
       color: var(--palette-color-darkest);
-
+      /* transition: all 0.2s ease; */
 
       /* Hide scrollbar for Firefox */
       scrollbar-width: thin;
