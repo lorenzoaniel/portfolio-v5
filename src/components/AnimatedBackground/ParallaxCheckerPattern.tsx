@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { MotionValue, motion, useTransform } from "framer-motion";
 
@@ -6,14 +6,12 @@ import { createCheckerPattern } from "../../helpers/nonHooks/createCheckerPatter
 
 import useCurrentDimension from "../../helpers/hooks/useCurrDimension";
 import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
+import { scrollYContext } from "../../App";
 
-interface Props {
-	scrollY: MotionValue<number>; //useTransform pairing
-}
-
-const ParallaxCheckerPattern: React.FC<Props> = ({ scrollY }) => {
+const ParallaxCheckerPattern: React.FC = () => {
+	let scrollY: MotionValue<number> = useContext(scrollYContext);
 	const [squares, setSquares] = useState<React.ReactNode[]>();
-	const rotate = useTransform(scrollY, [0.1, 1], [0, 360]);
+	const rotate = useTransform(scrollY, [0, 1], [0, 360]);
 	let currWinSize = useCurrentDimension();
 
 	//Generating squares
