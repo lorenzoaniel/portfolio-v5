@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, createContext } from "react";
 
 import { GlobalStyle } from "./styles/GlobalStyle";
 
@@ -8,10 +8,11 @@ import Projects from "./pages/Projects/Projects";
 import Contact from "./pages/Contact/Contact";
 import NavbarDefault from "./components/Navbar/NavbarDefault";
 import ParallaxCheckerPattern from "./components/AnimatedBackground/ParallaxCheckerPattern";
-import { AnimatePresence, useScroll } from "framer-motion";
+import { AnimatePresence, MotionValue, useScroll } from "framer-motion";
+
+export const scrollYContext = createContext(new MotionValue<number>());
 
 const App: React.FC = () => {
-	// const ref = useRef(null);
 	const { scrollYProgress } = useScroll({ offset: ["start end", "end end"] });
 
 	//RENDER
@@ -19,16 +20,18 @@ const App: React.FC = () => {
 		<>
 			<GlobalStyle />
 			<Suspense fallback={<div>Loading...</div>}>
-				<AnimatePresence>
-					<Main id={"App"}>
-						<ParallaxCheckerPattern scrollY={scrollYProgress} />
-						<NavbarDefault />
+				<scrollYContext.Provider value={scrollYProgress}>
+					<AnimatePresence>
+						<Main id={"App"}>
+							<ParallaxCheckerPattern />
+							<NavbarDefault />
 
-						<Home />
-						<Projects />
-						<Contact />
-					</Main>
-				</AnimatePresence>
+							<Home />
+							<Projects />
+							<Contact />
+						</Main>
+					</AnimatePresence>
+				</scrollYContext.Provider>
 			</Suspense>
 		</>
 	);
