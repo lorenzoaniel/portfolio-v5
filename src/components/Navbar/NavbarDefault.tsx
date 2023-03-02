@@ -90,7 +90,6 @@ const _MotionVariants = {
 			margin: "1rem 0% 90vh 5%",
 			width: "clamp(5rem, 15vw, 20rem)",
 			transition: {
-				duration: 0.3,
 				ease: "easeInOut",
 				when: "afterChildren",
 			},
@@ -100,7 +99,6 @@ const _MotionVariants = {
 			margin: "1rem auto 90vh auto",
 			width: "clamp(90%, 90%, 90%)",
 			transition: {
-				duration: 0.3,
 				ease: "easeInOut",
 				when: "beforeChildren",
 			},
@@ -111,7 +109,6 @@ const _MotionVariants = {
 			opacity: 0,
 			width: "0%",
 			transition: {
-				duration: 0.3,
 				ease: "easeInOut",
 				when: "afterChildren",
 			},
@@ -120,7 +117,6 @@ const _MotionVariants = {
 			opacity: 1,
 			width: "100%",
 			transition: {
-				duration: 0.3,
 				ease: "easeInOut",
 				when: "beforeChildren",
 			},
