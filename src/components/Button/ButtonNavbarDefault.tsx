@@ -26,7 +26,7 @@ const ButtonNavbarDefault: React.FC<Props> = ({ children, destination }) => {
 			onClick={() => {
 				//opted to have a click handler instead of using Link so that I can separate the styling of this button with the functionality of the scroll
 				scroller.scrollTo(destination, {
-					duration: 500,
+					duration: 1500,
 					delay: 100,
 					smooth: true,
 				});
