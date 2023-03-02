@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import HeroHeading from "../../components/Heading/HeroHeading";
 
 const Home: React.FC = () => {
 	console.log("rerender");
 
 	return (
 		<Main id={"home"}>
-			{/* <Test>
+			<HeroHeading title={"Hi, my name is Lorenzo"} />
+			<Test>
 				<h1>
 					<code>useScroll</code> demo
 				</h1>
@@ -73,18 +75,23 @@ const Home: React.FC = () => {
 					</p>
 					<p>Quisque convallis ligula non magna efficitur tincidunt.</p>
 				</article>
-			</Test> */}
+			</Test>
 		</Main>
 	);
 };
 
 const Main = styled(motion.section)`
-	height: 200rem;
+	height: fit-content;
 	background: transparent;
-	padding-top: calc(10vh + 1rem); //takes into account NavbarDefault height and margin
+	padding-top: calc(10vh + 3rem); //takes into account NavbarDefault height and margin
+
+	display: flex;
+	flex-direction: column;
+	row-gap: 5rem;
 `;
 
 const Test = styled(motion.div)`
+	height: fit-content;
 	color: black;
 `;
 

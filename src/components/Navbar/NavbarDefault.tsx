@@ -82,20 +82,27 @@ const Navbar = styled(motion.div)`
 
 const _MotionVariants = {
 	Main: {
+		initial: {
+			opacity: 0,
+		},
 		toggledOff: {
+			opacity: 1,
 			margin: "1rem 0% 90vh 5%",
 			width: "clamp(5rem, 15vw, 20rem)",
 			transition: {
 				duration: 0.3,
 				ease: "easeInOut",
+				when: "afterChildren",
 			},
 		},
 		toggledOn: {
+			opacity: 1,
 			margin: "1rem auto 90vh auto",
 			width: "clamp(90%, 90%, 90%)",
 			transition: {
 				duration: 0.3,
 				ease: "easeInOut",
+				when: "beforeChildren",
 			},
 		},
 	},

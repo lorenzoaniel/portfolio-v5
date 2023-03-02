@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         @@@@@@@@@@@ 
       */
 
-      --default-font-button-size: clamp(1.5rem, 5vw, 3rem); 
+      --default-font-button-size: clamp(1.5rem, 4vw + 0.5rem, 3rem); 
 
       /*
       * NORMALIZE
@@ -36,9 +36,10 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       box-sizing: border-box;
       font-family: 'Roboto';
-      font-size: clamp(1.6rem, 5vw, 3.5rem);
+      font-size: clamp(1.6rem, 5vw + 0.5rem, 3.5rem);
       z-index: 0;
 	    backface-visibility: hidden;
+      color: var(--palette-color-darkest);
 
 
       /* Hide scrollbar for Firefox */

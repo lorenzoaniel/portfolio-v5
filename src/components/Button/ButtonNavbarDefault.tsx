@@ -44,7 +44,7 @@ const Main = styled(motion.button)`
 	flex-grow: 1;
 `;
 
-const Text = styled.h1`
+const Text = styled(motion.h1)`
 	background: var(--palette-color-darkest);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

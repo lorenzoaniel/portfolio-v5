@@ -8,6 +8,7 @@ import { navButtonMotionVariant } from "./mixins/motion/navButtonMotionVariant";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { navMenuToggle, selectNavmenuToggle } from "../../redux/features/navBarToggleSlice";
+import { device } from "../../styles/breakpoints";
 
 /**
  * Used as the way to toggle navbar from compact to full or vice-versa
@@ -37,6 +38,10 @@ const Main = styled(motion.button)`
 	display: flex;
 	justify-content: start;
 	align-items: center;
+
+	@media ${device.desktop} {
+		min-width: clamp(4.5rem, 10vw, 20rem);
+	}
 `;
 
 const ArrowStyle = {
