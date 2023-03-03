@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion, useAnimationControls, useScroll, useSpring, useTransform } from "framer-motion";
-import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
 import { GiStrikingDiamonds } from "react-icons/gi";
 
 interface Props {
@@ -114,7 +113,7 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 
 //HEROMAINCONTAINER
 const Main = styled(motion.h1)`
-	height: clamp(20rem, 50vw + 0.5rem, 70rem);
+	height: clamp(20rem, 100vw + 0.5rem, 70rem);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -127,7 +126,8 @@ const Main = styled(motion.h1)`
 const TitleMain = styled(motion.div)`
 	font-size: clamp(1.5rem, 5vw + 0.5rem, 6rem);
 	align-self: flex-start;
-	margin-top: 3%;
+	margin-top: 15vmin;
+	text-shadow: 0 0.5rem 1rem var(--palette-color-darkest);
 `;
 
 //ICON
