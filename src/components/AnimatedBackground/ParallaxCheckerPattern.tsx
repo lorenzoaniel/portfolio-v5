@@ -43,7 +43,7 @@ const ParallaxCheckerPattern: React.FC = () => {
 const Main = styled(motion.div)`
 	background: transparent;
 	position: fixed;
-	height: 100%;
+	height: 100%; //any other value will break this
 	width: 100%;
 	top: 0;
 	right: 0;
