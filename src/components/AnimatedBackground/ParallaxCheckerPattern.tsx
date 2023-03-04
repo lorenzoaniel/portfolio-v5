@@ -4,15 +4,14 @@ import { MotionValue, motion, useTransform } from "framer-motion";
 
 import { createCheckerPattern } from "../../helpers/nonHooks/createCheckerPatter";
 
-import useCurrentDimension from "../../helpers/hooks/useCurrDimension";
 import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
-import { scrollYContext } from "../../App";
+import { appContext } from "../../App";
 
 const ParallaxCheckerPattern: React.FC = () => {
-	let scrollY: MotionValue<number> = useContext(scrollYContext);
+	let scrollY: MotionValue<number> = useContext(appContext).scrollY;
+	let currWinSize = useContext(appContext).currDimension;
 	const [squares, setSquares] = useState<React.ReactNode[]>();
 	const rotate = useTransform(scrollY, [0, 1], [0, 360]);
-	let currWinSize = useCurrentDimension();
 
 	//Generating squares
 	useEffect(() => {
