@@ -45,14 +45,7 @@ const Main = styled(motion.button)`
 `;
 
 const Text = styled(motion.h1)`
-	background: var(--palette-color-darkest);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	text-shadow: 0 0.1rem 0.1rem var(--palette-color-darkest);
-	filter: drop-shadow(0 0.1rem 0.1rem var(--palette-color-dark));
-
 	transform: skew(-20deg);
-
 	font-size: var(--default-font-button-size);
 `;
 
