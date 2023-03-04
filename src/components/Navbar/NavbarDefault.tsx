@@ -43,7 +43,7 @@ const Main = styled(motion.nav)`
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 90%;
+	max-width: 90%;
 	z-index: 9999;
 	height: clamp(7rem, 10vh, 10vh);
 
