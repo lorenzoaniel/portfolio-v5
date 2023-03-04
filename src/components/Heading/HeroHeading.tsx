@@ -13,7 +13,7 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 
 	//TitleMain
 	const titleMainCont = useAnimationControls();
-	const yTitleMain = useSpring(useTransform(scrollY, [0, 1], [0, 0.5], { clamp: false }));
+	const yTitleMain = useSpring(useTransform(scrollY, [0, 1], [0.5, 0], { clamp: false }));
 	let titleMainParallaxStyle = {
 		y: yTitleMain,
 		opacity: opacity,
@@ -78,7 +78,6 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 						y: 200,
 						rotate: -90,
 					}}
-					onMouseOver={() => {}}
 					animate={IconsOnPageLoadCont}
 					style={IconsParallaxStyle.Left}
 				>
@@ -113,7 +112,7 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 
 //HEROMAINCONTAINER
 const Main = styled(motion.h1)`
-	height: clamp(20rem, 100vw + 0.5rem, 70rem);
+	height: 100vh;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -126,8 +125,8 @@ const Main = styled(motion.h1)`
 const TitleMain = styled(motion.div)`
 	font-size: clamp(1.5rem, 5vw + 0.5rem, 6rem);
 	align-self: flex-start;
-	margin-top: 15vmin;
-	text-shadow: 0 0.5rem 1rem var(--palette-color-darkest);
+	margin: auto 0;
+	text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 1);
 `;
 
 //ICON
