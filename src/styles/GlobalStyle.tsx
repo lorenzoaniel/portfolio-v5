@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
       --palette-color-medium: rgb(203, 241, 245);
       --palette-color-dark: rgb(166, 227, 233);
       --palette-color-darkest: rgb(113, 201, 206);
+      --palette-color-font: rgb(100, 173, 176);
 
 
       --glass-white-light: rgba(255, 255, 255, 0.2);
@@ -26,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
       */
 
       --default-font-button-size: clamp(1.5rem, 4vw + 0.5rem, 3rem); 
+      --default-font-h2-size: clamp(2rem, 5vmin + 0.5rem, 7rem);
 
       /*
       * NORMALIZE
@@ -40,7 +42,8 @@ export const GlobalStyle = createGlobalStyle`
       z-index: 0;
 	    backface-visibility: hidden;
       color: var(--palette-color-darkest);
-      /* transition: all 0.2s ease; */
+	    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 1);
+      transition: font-size 0.3s ease-in-out;
 
       /* Hide scrollbar for Firefox */
       scrollbar-width: thin;
@@ -60,8 +63,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    width: 100%;
-    height: fit-content;
+    max-width: 100%;
+    min-height: fit-content;
     font-size: 62.5%;
     overflow-x: hidden;
 
