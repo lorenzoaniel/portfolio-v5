@@ -1,57 +1,93 @@
-import React, { createContext, useContext, useRef } from "react";
+import React, { createContext } from "react";
 import styled from "styled-components";
-import { MotionValue, motion, useScroll } from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
+
 import HeroHeading from "../../components/Heading/HeroHeading";
 import HomeCrystalContent from "../../components/Content/HomeCrystalContent";
-import { appContext } from "../../App";
+import GemChunkContent from "../../components/Content/GemChunkContent";
+
+import { FaReact, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FiFramer } from "react-icons/fi";
+import { HiBadgeCheck } from "react-icons/hi";
+import { SiStyledcomponents, SiRedux, SiReactrouter, SiTypescript } from "react-icons/si";
+import IconAndLink from "../../components/Links/IconAndLink";
+import { useAppSelector } from "../../redux/hooks";
+import { selectPagesInfo } from "../../redux/features/pagesInfoSlice";
 
 export const homeContext = createContext({
 	scrollY: new MotionValue<number>(),
 });
 
 const Home: React.FC = () => {
-	let ref = useRef(null);
-	const { scrollYProgress } = useScroll({
-		target: ref,
-		offset: ["100vh start", "0vh end"], //animation  starts when bot of viewport(vp) touches top of target and ends when top of vp touches bottom of target
-	});
-	// let scrollY: MotionValue<number> = useContext(appContext).scrollY;
-	//scrollY={scrollY}
+	const homeContext = useAppSelector(selectPagesInfo).Home;
+
 	return (
 		<Main id={"home"}>
-			<HeroHeading title={"Hi, my name is Lorenzo"} />
-			<homeContext.Provider value={{ scrollY: scrollYProgress }}>
-				<Content ref={ref}>
-					<HomeCrystalContent data={"Front-end Developer"} />
-					<HomeCrystalContent isLeft={false} data={"About Me"} />
-					{/* <HomeCrystalContent data={"Aspiring Front-end Developer"} /> */}
-					{/* <HomeCrystalContent data={"Aspiring Front-end Developer"} />
-					<HomeCrystalContent data={"Aspiring Front-end Developer"} />
-					<HomeCrystalContent data={"Aspiring Front-end Developer"} /> */}
-				</Content>
-			</homeContext.Provider>
+			<HeroHeading title={homeContext.Hero} />
+			<Content>
+				<HomeCrystalContent data={homeContext.Role} />
+				<GemChunkContent isLeft={false}>
+					<>
+						<FaReact style={iconStyle} />
+						<FiFramer style={iconStyle} />
+						<SiStyledcomponents style={iconStyle} />
+						<SiRedux style={iconStyle} />
+						<SiReactrouter style={iconStyle} />
+						<SiTypescript style={iconStyle} />
+					</>
+				</GemChunkContent>
+				<HomeCrystalContent isLeft={false} data={homeContext.AboutMe.title} />
+				<GemChunkContent>
+					<>
+						<IconAndLink
+							data={homeContext.AboutMe.linkedin.title}
+							href={homeContext.AboutMe.linkedin.href}
+						>
+							<FaLinkedin style={iconStyle} />
+						</IconAndLink>
+						<IconAndLink
+							data={homeContext.AboutMe.github.title}
+							href={homeContext.AboutMe.github.href}
+						>
+							<FaGithub style={iconStyle} />
+						</IconAndLink>
+						<IconAndLink
+							data={homeContext.AboutMe.credly.title}
+							href={homeContext.AboutMe.credly.href}
+						>
+							<HiBadgeCheck style={iconStyle} />
+						</IconAndLink>
+					</>
+				</GemChunkContent>
+			</Content>
 		</Main>
 	);
 };
 
 const Main = styled(motion.section)`
-	/* border: 0.1rem solid blue; */
 	height: fit-content;
 	background: transparent;
-	/* padding-top: calc(10vh + 3rem); //takes into account NavbarDefault height and margin */
 
 	display: flex;
 	flex-direction: column;
 	row-gap: 20vmin;
-	/* justify-content: center; */
+
+	overflow-x: hidden;
 `;
 
 const Content = styled(motion.div)`
-	/* border: 0.1rem solid orange; */
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	row-gap: 5vmin;
 `;
+
+const iconStyle = {
+	height: "9vmin",
+	width: "9vmin",
+	fill: "var(--palette-color-darkest)",
+	filter: "drop-shadow(0rem 0rem 0.1rem var(--palette-color-darkest))",
+	color: "transparent",
+};
 
 export default Home;
