@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
-import { MotionValue, motion, useTransform } from "framer-motion";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { GiCrystalGrowth } from "react-icons/gi";
 import { homeContext } from "../../pages/Home/Home";
 
@@ -10,11 +10,16 @@ interface Props {
 }
 
 const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
-	let scrollY: MotionValue<number> = useContext(homeContext).scrollY;
-	const opacity = useTransform(scrollY, [0, 0.6, 1], [0, 1, 0]);
+	const ref = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["100vh start", "0vh end"], //animation  starts when bot of viewport(vp) touches top of target and ends when top of vp touches bottom of target
+	});
+	// let scrollY: MotionValue<number> = useContext(homeContext).scrollY;
+	const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [0, 1, 0]);
 
 	//ContentIcons
-	const widthContent = useTransform(scrollY, [0, 0.6, 1], ["20vmin", "90vmin", "0vmin"]);
+	const widthContent = useTransform(scrollYProgress, [0, 0.5, 1], ["0vmin", "90vmin", "0vmin"]);
 	let contentParallaxStyle = {
 		width: widthContent,
 	};
@@ -25,14 +30,14 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 	};
 
 	//Crystal
-	const widthCrystal = useTransform(scrollY, [0, 0.6, 1], ["10vmin", "45vmin", "0vmin"]);
+	const widthCrystal = useTransform(scrollYProgress, [0, 0.6, 1], ["10vmin", "45vmin", "0vmin"]);
 	let crystalParallaxStyle = {
 		width: widthCrystal,
 	};
 
 	return (
 		//Each variant is paired with a crystal that grows with it
-		<Main>
+		<Main ref={ref}>
 			<Content isLeft={isLeft}>
 				{isLeft ? (
 					<>
@@ -64,7 +69,7 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 	);
 };
 
-const Main = styled(motion.main)`
+const Main = styled(motion.article)`
 	height: fit-content;
 	width: 100%;
 	display: flex;
@@ -130,7 +135,7 @@ const Data = styled(motion.h2)<Data>`
 	font-size: var(--default-font-h2-size);
 	word-break: normal;
 	height: fit-content;
-	width: 20rem;
+	width: 23rem;
 	transform: skew(-45deg);
 	display: flex;
 	padding: 0 ${(p) => (p.isLeft ? "50%" : "0%")};
