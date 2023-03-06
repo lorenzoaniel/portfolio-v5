@@ -31,21 +31,27 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 	// let currDimension = useContext(appContext).currDimension;
 	// const ref = useRef(null);
 	// const isInView = useInView(ref, { once: true });
-	const width = useTransform(scrollY, [0, 0.5, 1], ["0vmin", "80vmin", "0vmin"]);
-	const opacity = useTransform(scrollY, [0, 0.4, 1], [0.7, 1, 0.5]);
+
+	const opacity = useTransform(scrollY, [0, 0.6, 1], [0, 1, 0]);
 
 	//ContentIcons
 	const contentIconCont = useAnimationControls();
+	const widthContent = useTransform(scrollY, [0, 0.6, 1], ["20vmin", "90vmin", "0vmin"]);
 	let contentParallaxStyle = {
-		width: width,
-		// opacity: opacity,
+		width: widthContent,
+	};
+
+	//Data
+	let dataParallaxStyle = {
+		opacity: opacity,
 	};
 
 	//Crystal
 	const crystalCont = useAnimationControls();
-	// let crystalParallaxStyle = {
-	// 	scaleX: scaleX,
-	// };
+	const widthCrystal = useTransform(scrollY, [0, 0.6, 1], ["10vmin", "45vmin", "0vmin"]);
+	let crystalParallaxStyle = {
+		width: widthCrystal,
+	};
 
 	//Place all Seq func here to orchestrate initial pageload
 	// const MainLoadSeq = async () => {
@@ -70,19 +76,27 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 
 	return (
 		<Main>
-			{/* <Crystal>
-				<GiCrystalGrowth style={iconStyle(isLeft)} />
-			</Crystal> */}
-
 			<Content isLeft={isLeft}>
 				{isLeft ? (
-					<ContentLeft style={contentParallaxStyle}>
-						<Data>{data}</Data>
-					</ContentLeft>
+					<>
+						<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
+							<GiCrystalGrowth style={iconStyle(isLeft)} />
+						</Crystal>
+
+						<ContentLeft style={contentParallaxStyle}>
+							<Data style={dataParallaxStyle}>{data}</Data>
+						</ContentLeft>
+					</>
 				) : (
-					<ContentRight style={contentParallaxStyle}>
-						<Data>{data}</Data>
-					</ContentRight>
+					<>
+						<ContentRight style={contentParallaxStyle}>
+							<Data style={dataParallaxStyle}>{data}</Data>
+						</ContentRight>
+
+						<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
+							<GiCrystalGrowth style={iconStyle(isLeft)} />
+						</Crystal>
+					</>
 				)}
 			</Content>
 		</Main>
@@ -90,17 +104,24 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 };
 
 const Main = styled(motion.main)`
-	border: 0.1rem solid red;
+	/* border: 0.1rem solid red; */
 	height: fit-content;
 	width: 100%;
 	display: flex;
+	overflow: hidden;
+	padding: 5vmin 0;
 `;
 
-const Crystal = styled(motion.div)`
+interface Crystal {
+	isLeft: boolean;
+}
+
+const Crystal = styled(motion.div)<Crystal>`
 	/* border: 0.1rem solid blue; */
 	position: absolute;
-	height: 45vmin;
-	width: 45vmin;
+	${(p) => (p.isLeft ? "left: -1vmin" : "right: -1vmin")};
+	/* height: 45vmin;
+	width: 45vmin; */
 	z-index: 1;
 `;
 
@@ -110,7 +131,7 @@ const iconStyle = (isLeft: boolean) => {
 		width: "inherit",
 		fill: "var(--palette-color-medium)",
 		filter: "drop-shadow(0rem 0rem 1rem var(--palette-color-darkest))",
-		transform: `rotate(${isLeft ? 90 : 180}deg)`,
+		transform: `rotate(${isLeft ? 90 : 270}deg)`,
 	};
 };
 
@@ -126,12 +147,13 @@ const Content = styled.div<Content>`
 	display: flex;
 	justify-content: ${(p) => (p.isLeft ? "flex-start" : "flex-end")};
 	align-items: center;
-	/* overflow-x: hidden; */
+	/* overflow-x: hidden;
+	overflow-y: visible; */
 `;
 
 const ContentLeft = styled(motion.div)`
 	height: 95%;
-	padding: 3vmin 8vmin;
+	padding: 3vmin 15vmin;
 	box-shadow: 0 0 0.5rem 0.2rem var(--palette-color-medium);
 	backdrop-filter: blur(0.1rem);
 	justify-self: flex-end;
@@ -141,18 +163,19 @@ const ContentLeft = styled(motion.div)`
 `;
 
 const ContentRight = styled(ContentLeft)`
-	justify-self: flex-start;
+	justify-content: flex-start;
 `;
 
 const Data = styled(motion.h2)`
 	font-size: var(--default-font-h2-size);
 	word-break: normal;
-	height: 20rem;
+	height: 15rem;
 	width: 20rem;
 	transform: skew(-45deg);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 `;
 
 export default HomeCrystalContent;
