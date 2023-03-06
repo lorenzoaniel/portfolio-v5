@@ -56,8 +56,6 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 		MainLoadSeq();
 	}, []);
 
-	console.log("render hero");
-
 	return (
 		<Main
 			initial={{
@@ -124,6 +122,7 @@ const Main = styled(motion.h1)`
 //TITLE
 const TitleMain = styled(motion.div)`
 	font-size: clamp(1.5rem, 5vw + 0.5rem, 6rem);
+	text-align: center;
 	align-self: flex-start;
 	margin: auto 0;
 	text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 1);
