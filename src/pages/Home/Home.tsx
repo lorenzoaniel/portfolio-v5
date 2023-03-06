@@ -22,9 +22,9 @@ const Home: React.FC = () => {
 			<HeroHeading title={"Hi, my name is Lorenzo"} />
 			<homeContext.Provider value={{ scrollY: scrollYProgress }}>
 				<Content ref={ref}>
-					<HomeCrystalContent data={"Aspiring Front-end Developer"} />
-					<HomeCrystalContent data={"Aspiring Front-end Developer"} />
-					<HomeCrystalContent data={"Aspiring Front-end Developer"} />
+					<HomeCrystalContent data={"Front-end Developer"} />
+					<HomeCrystalContent isLeft={false} data={"About Me"} />
+					{/* <HomeCrystalContent data={"Aspiring Front-end Developer"} /> */}
 					{/* <HomeCrystalContent data={"Aspiring Front-end Developer"} />
 					<HomeCrystalContent data={"Aspiring Front-end Developer"} />
 					<HomeCrystalContent data={"Aspiring Front-end Developer"} /> */}
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 };
 
 const Main = styled(motion.section)`
-	border: 0.1rem solid blue;
+	/* border: 0.1rem solid blue; */
 	height: fit-content;
 	background: transparent;
 	/* padding-top: calc(10vh + 3rem); //takes into account NavbarDefault height and margin */
@@ -47,7 +47,7 @@ const Main = styled(motion.section)`
 `;
 
 const Content = styled(motion.div)`
-	border: 0.1rem solid orange;
+	/* border: 0.1rem solid orange; */
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
