@@ -12,6 +12,7 @@ import {
 import { GiCrystalGrowth } from "react-icons/gi";
 import { homeContext } from "../../pages/Home/Home";
 import { appContext } from "../../App";
+import { device } from "../../styles/breakpoints";
 
 interface Props {
 	data: string;
@@ -84,13 +85,17 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 						</Crystal>
 
 						<ContentLeft style={contentParallaxStyle}>
-							<Data style={dataParallaxStyle}>{data}</Data>
+							<Data isLeft={isLeft} style={dataParallaxStyle}>
+								{data}
+							</Data>
 						</ContentLeft>
 					</>
 				) : (
 					<>
 						<ContentRight style={contentParallaxStyle}>
-							<Data style={dataParallaxStyle}>{data}</Data>
+							<Data isLeft={isLeft} style={dataParallaxStyle}>
+								{data}
+							</Data>
 						</ContentRight>
 
 						<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
@@ -166,16 +171,25 @@ const ContentRight = styled(ContentLeft)`
 	justify-content: flex-start;
 `;
 
-const Data = styled(motion.h2)`
+interface Data {
+	isLeft: boolean;
+}
+
+const Data = styled(motion.h2)<Data>`
 	font-size: var(--default-font-h2-size);
 	word-break: normal;
-	height: 15rem;
+	height: fit-content;
 	width: 20rem;
 	transform: skew(-45deg);
 	display: flex;
+	padding: 0 ${(p) => (p.isLeft ? "50%" : "0%")};
 	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
+
+	${device.laptop} {
+	}
 `;
 
 export default HomeCrystalContent;
