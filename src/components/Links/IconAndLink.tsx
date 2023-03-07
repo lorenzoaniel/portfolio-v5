@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
 
 interface Props {
 	children: React.ReactElement | React.ReactElement[];
@@ -9,10 +10,26 @@ interface Props {
 }
 
 const IconAndLink: React.FC<Props> = ({ data, href, children }) => {
+	const [hoverToggle, setHoverToggle] = useState(false);
+
 	return (
-		<Main>
+		<Main
+			onMouseOver={() => {
+				setHoverToggle(true);
+			}}
+			onMouseLeave={() => {
+				setHoverToggle(false);
+			}}
+			// {...motionPropsDefault}
+		>
 			<Icon>{children}</Icon>
-			<Link href={href} target={"_blank"}>
+			<Link
+				{...motionPropsDefault}
+				animate={hoverToggle ? "whileHover" : "initial"}
+				variants={_MotionVariants.Link}
+				href={href}
+				target={"_blank"}
+			>
 				{data}
 			</Link>
 		</Main>
@@ -40,5 +57,23 @@ const Icon = styled(motion.div)`
 const Link = styled(motion.a)`
 	text-decoration: none;
 `;
+
+const _MotionVariants = {
+	Link: {
+		initial: {
+			scale: 1,
+		},
+		whileHover: {
+			scale: 1.2,
+			transition: {
+				// duration: 0.3,
+				ease: "easeInOut",
+			},
+		},
+		whileTap: {
+			scale: 1,
+		},
+	},
+};
 
 export default IconAndLink;
