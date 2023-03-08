@@ -49,7 +49,7 @@ const App: React.FC = () => {
 	);
 };
 
-const Main = styled.section`
+const Main = styled.main`
 	height: fit-content;
 	width: 100%;
 	background: var(--palette-color-light);
