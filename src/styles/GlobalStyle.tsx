@@ -39,7 +39,6 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
       font-family: 'Roboto';
       font-size: clamp(1.6rem, 5vw + 0.5rem, 3.5rem);
-      z-index: 0;
 	    backface-visibility: hidden;
       color: var(--palette-color-darkest);
 	    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 1);
