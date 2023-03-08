@@ -4,6 +4,7 @@ import type { RootState } from "../store";
 //STATIC DATA ONLY
 interface infoState {
 	Home: any;
+	Projects: any;
 }
 
 const initialState = {
@@ -23,6 +24,25 @@ const initialState = {
 			credly: {
 				title: "Credly",
 				href: "https://www.credly.com/users/mikhail-lorenzo-aniel/badges",
+			},
+		},
+	},
+	Projects: {
+		title: "Projects",
+		projects: {
+			portfolioV4: {
+				title: "PortfolioV4",
+				github: "https://github.com/lorenzoaniel/portfolio-v4",
+				imgSrc: "/assets/images/static/portfoliov4img.png",
+				link: "http://mikhaillorenzoaniel.surge.sh/",
+				desc: "Fourth version of my portoflio that houses six other learning projects as well as other versions of previous portfolios, currently this site is version 5",
+			},
+			socialMediaAppDemo: {
+				title: "Social Media App",
+				github: "",
+				imgSrc: "/assets/images/static/comingsoonimg.jpg",
+				link: "",
+				desc: "Currently in the works, a fullstack social media app with built in auth and working MongoDB backend",
 			},
 		},
 	},
