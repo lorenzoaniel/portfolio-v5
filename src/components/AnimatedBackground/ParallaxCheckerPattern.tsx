@@ -69,6 +69,8 @@ const Square = styled(motion.div)`
 
 	background: rgba(255, 255, 255, 0.1);
 	box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 1);
+
+	z-index: -1;
 `;
 
 const _MotionVariants = {
