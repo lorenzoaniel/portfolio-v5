@@ -7,13 +7,14 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"install-deps": "yarn add react-icons react-scroll @types/react-scroll framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
+		"install-deps": "yarn add formik yup react-icons react-scroll @types/react-scroll framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.3",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-scroll": "^1.8.6",
 		"@types/styled-components": "^5.1.26",
+		"formik": "^2.2.9",
 		"framer-motion": "^10.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -21,7 +22,8 @@
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.8.1",
 		"react-scroll": "^1.8.9",
-		"styled-components": "^5.3.6"
+		"styled-components": "^5.3.6",
+		"yup": "^1.0.2"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.27",
