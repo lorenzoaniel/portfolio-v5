@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import { motionPropsDefault } from "../../helpers/misc/motionPropsDefault";
 
@@ -10,6 +11,7 @@ interface Values {
 	firstName: string;
 	lastName: string;
 	email: string;
+	message: string;
 }
 
 const DefaultForm: React.FC = () => {
@@ -23,37 +25,67 @@ const DefaultForm: React.FC = () => {
 					firstName: "",
 					lastName: "",
 					email: "",
+					message: "",
 				}}
 				validationSchema={Yup.object({
 					firstName: Yup.string().max(15, "Must be 15 characters or less").required("Required"),
 					lastName: Yup.string().max(15, "Must be 15 characters or less").required("Required"),
 					email: Yup.string().email("Invalid email address").required("Required"),
+					message: Yup.string()
+						.required("Please enter a message")
+						.max(500, "The message should be less than 500 characters")
+						.matches(/^[^<>]*$/, "The message contains prohibited characters"),
 				})}
-				onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-
-						setSubmitting(false);
-					}, 400);
+				onSubmit={async (values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
+					await axios
+						.post("https://formspree.io/f/mqkolaok", values)
+						.then(() => {
+							alert("Email sent successfully!");
+							resetForm();
+						})
+						.catch(() => {
+							alert(
+								"Error sending email. This is a free account on formspree and has a 50 submission limit, limit might have been reached. Please try again later."
+							);
+						})
+						.finally(() => {
+							setSubmitting(false);
+						});
 				}}
 			>
-				<StyledForm>
-					<Label htmlFor="firstName">First Name</Label>
-					<StyledInput type="text" name="firstName" placeholder="John" />
-					<ErrorMessage name={"firstName"} />
+				{({ isSubmitting }) => (
+					<StyledForm>
+						<Label htmlFor="firstName">First Name</Label>
+						<StyledInput type="text" name="firstName" placeholder="John" />
+						<ErrorMessage name={"firstName"} />
 
-					<Label htmlFor="lastName">Last Name</Label>
-					<StyledInput type="text" name="lastName" placeholder="Doe" />
-					<ErrorMessage name={"lastName"} />
+						<Label htmlFor="lastName">Last Name</Label>
+						<StyledInput type="text" name="lastName" placeholder="Doe" />
+						<ErrorMessage name={"lastName"} />
 
-					<Label htmlFor="email">Email</Label>
-					<StyledInput name="email" placeholder="john@acme.com" type="email" />
-					<ErrorMessage name={"email"} />
+						<Label htmlFor="email">Email</Label>
+						<StyledInput name="email" placeholder="john@acme.com" type="email" />
+						<ErrorMessage name={"email"} />
 
-					<Submit type="submit" {...motionPropsDefault} variants={_MotionVariants.Submit}>
-						Submit
-					</Submit>
-				</StyledForm>
+						<Label htmlFor="message">Message</Label>
+						<StyledTextArea
+							name="message"
+							placeholder="Write your message here..."
+							type="text"
+							component={"textarea"}
+						/>
+						<ErrorMessage name={"message"} />
+
+						<Submit
+							type="submit"
+							disabled={isSubmitting}
+							{...motionPropsDefault}
+							variants={_MotionVariants.Submit}
+						>
+							Submit
+						</Submit>
+					</StyledForm>
+				)}
 			</Formik>
 		</Main>
 	);
@@ -97,17 +129,23 @@ const StyledInput = styled(Field)`
 	}
 `;
 
+const StyledTextArea = styled(StyledInput)`
+	height: 20rem;
+	resize: none;
+`;
+
 const Label = styled(motion.label)`
 	width: 50vmin;
 `;
 
 const Submit = styled(motion.button)`
-	height: 10vmin;
-	width: 20vmin;
+	height: fit-content;
+	width: fit-content;
 	box-shadow: 0 0 0.5rem 0.2rem var(--palette-color-medium);
 	backdrop-filter: blur(0.3rem);
 	background: transparent;
 	border: none;
+	padding: 1.5vmin;
 `;
 
 const _MotionVariants = {
