@@ -66,6 +66,7 @@ const Home: React.FC = () => {
 
 const Main = styled(motion.section)`
 	height: fit-content;
+	width: 100%;
 	background: transparent;
 
 	display: flex;
