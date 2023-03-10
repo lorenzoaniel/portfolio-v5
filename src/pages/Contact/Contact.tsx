@@ -4,25 +4,27 @@ import { motion } from "framer-motion";
 
 import DefaultForm from "../../components/Form/DefaultForm";
 import FloatingCrystalHeading from "../../components/Heading/FloatingCrystalHeading";
+import DefaultFooter from "../../components/Footer/DefaultFooter";
 
 const Contact: React.FC = () => {
 	return (
 		<Main id={"contact"}>
 			<FloatingCrystalHeading title={"Contact Me"} />
 			<DefaultForm />
+			<DefaultFooter />
 		</Main>
 	);
 };
 
 const Main = styled(motion.section)`
-	border: 0.1rem solid blue;
-
 	height: fit-content;
 	background: transparent;
-	/* background: var(--palette-color-light); */
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	row-gap: 3vmin;
+	padding: 1.5vmin;
 `;
 
 export default Contact;
