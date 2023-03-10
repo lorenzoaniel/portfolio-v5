@@ -9,7 +9,7 @@ interface Props {
 const DisplayThumbnail: React.FC<Props> = ({ source }) => {
 	return (
 		<Main>
-			<Img src={source} />
+			<Img src={source} alt={source} />
 		</Main>
 	);
 };
