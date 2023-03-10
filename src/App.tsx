@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import React, { Suspense, createContext, lazy, useEffect, useRef } from "react";
+import React, { Suspense, createContext, lazy, useEffect } from "react";
 
 import { GlobalStyle } from "./styles/GlobalStyle";
 
-// import Home from "./pages/Home/Home";
-// import Projects from "./pages/Projects/Projects";
-// import Contact from "./pages/Contact/Contact";
 import NavbarDefault from "./components/Navbar/NavbarDefault";
 import ParallaxCheckerPattern from "./components/AnimatedBackground/ParallaxCheckerPattern";
 import { AnimatePresence, MotionValue, useScroll } from "framer-motion";
 import useCurrentDimension from "./helpers/hooks/useCurrDimension";
+import DefaultLoading from "./components/Loading/DefaultLoading";
 
 export const appContext = createContext({
 	scrollY: new MotionValue<number>(),
@@ -21,7 +19,6 @@ const Projects = lazy(() => import("./pages/Projects/Projects"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 const App: React.FC = () => {
-	// let ref = useRef(null);
 	const currDimension = useCurrentDimension();
 	const { scrollYProgress } = useScroll();
 
@@ -31,9 +28,9 @@ const App: React.FC = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<Suspense fallback={<div>Loading...</div>}>
-				<appContext.Provider value={{ scrollY: scrollYProgress, currDimension }}>
-					<AnimatePresence mode={"wait"}>
+			<AnimatePresence mode={"wait"}>
+				<Suspense fallback={<DefaultLoading />}>
+					<appContext.Provider value={{ scrollY: scrollYProgress, currDimension }}>
 						<Main id={"App"}>
 							<ParallaxCheckerPattern />
 							<NavbarDefault />
@@ -42,9 +39,9 @@ const App: React.FC = () => {
 							<Projects />
 							<Contact />
 						</Main>
-					</AnimatePresence>
-				</appContext.Provider>
-			</Suspense>
+					</appContext.Provider>
+				</Suspense>
+			</AnimatePresence>
 		</>
 	);
 };
