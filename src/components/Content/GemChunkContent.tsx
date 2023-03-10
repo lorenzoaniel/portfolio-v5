@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { motion, useInView, useMotionValue, useScroll, useSpring } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 
 import { SiCrystal } from "react-icons/si";
 
@@ -61,15 +61,10 @@ const GemChunkContent: React.FC<Props> = ({ children, isLeft = true }) => {
 			<Content
 				initial={_MotionVariants.Content.initial}
 				animate={inView ? _MotionVariants.Content.animate : _MotionVariants.Content.initial}
-				style={{ y: contentY, skew: 30 }}
+				style={{ y: contentY, skew: 20 }}
 				isLeft={isLeft}
 			>
-				<Data
-				// animate={dataCont}
-				// style={{ y: contentY }}
-				>
-					{children}
-				</Data>
+				<Data>{children}</Data>
 			</Content>
 		</Main>
 	);
@@ -80,14 +75,13 @@ interface Main {
 }
 
 const Main = styled(motion.article)<Main>`
-	/* border: 0.1rem solid blue; */
 	height: fit-content;
-	width: inherit;
+	width: 100%;
 	margin: 10vmin 0;
 	display: flex;
 	justify-content: ${(p) => (p.isLeft ? "flex-start" : "flex-end")};
 	align-items: center;
-	padding: 1.5vmin 5vmin;
+	padding: 1.5vmin 11vmin;
 	column-gap: 10vmin;
 	overflow: hidden;
 `;
@@ -98,14 +92,13 @@ interface Gem {
 }
 
 const Gem = styled(motion.div)<Gem>`
-	height: clamp(10rem, 20vmin, 45rem); //
-	width: clamp(10rem, 20vmin, 45rem);
+	width: 30%;
 	order: ${(p) => (p.isLeft ? 1 : 2)};
 `;
 
 const iconStyle = {
-	height: "inherit",
-	width: "inherit",
+	height: "100%",
+	width: "100%",
 	fill: "var(--palette-color-medium)",
 	filter: "drop-shadow(0rem 0rem 1rem var(--palette-color-darkest))",
 };
@@ -117,10 +110,7 @@ interface Content {
 }
 
 const Content = styled(motion.div)<Content>`
-	/* border: 0.1rem solid orange; */
 	order: ${(p) => (p.isLeft ? 2 : 1)};
-	height: fit-content;
-	width: 80vmin;
 	padding: 5vmin;
 	display: flex;
 	justify-content: center;
@@ -128,20 +118,17 @@ const Content = styled(motion.div)<Content>`
 
 	box-shadow: 0 0 0.5rem 0.2rem var(--palette-color-medium);
 	backdrop-filter: blur(0.1rem);
+	width: 70%;
 `;
 
 const Data = styled(motion.div)`
-	/* border: 0.1rem solid blue; */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	height: fit-content;
-	width: 80%;
-	transform: skew(-30deg);
+	transform: skew(-20deg);
+	padding: 1.5vmin;
 	gap: 2.5vmin;
-	flex-grow: 1;
-	flex-shrink: 1;
 `;
 
 const _MotionVariants = {
