@@ -5,15 +5,17 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"server": "nodemon ./Server/nodemailer.js",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"install-deps": "yarn add formik yup react-icons react-scroll @types/react-scroll framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
+		"install-deps": "yarn add express dotenv nodemailer axios formik yup react-icons react-scroll @types/react-scroll framer-motion styled-components @types/styled-components redux react-redux @types/react-redux react-router-dom @types/react-router-dom"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.3",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-scroll": "^1.8.6",
 		"@types/styled-components": "^5.1.26",
+		"axios": "^1.3.4",
 		"formik": "^2.2.9",
 		"framer-motion": "^10.0.0",
 		"react": "^18.2.0",
