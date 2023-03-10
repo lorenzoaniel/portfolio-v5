@@ -1,6 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { motion, useAnimationControls, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+	motion,
+	useAnimationControls,
+	useInView,
+	useScroll,
+	useSpring,
+	useTransform,
+} from "framer-motion";
 import { GiStrikingDiamonds } from "react-icons/gi";
 
 interface Props {
@@ -8,6 +15,8 @@ interface Props {
 }
 
 const HeroHeading: React.FC<Props> = ({ title }) => {
+	let ref = useRef(null);
+	let inView = useInView(ref);
 	let { scrollY } = useScroll();
 	const opacity = useSpring(useTransform(scrollY, [0, 1000], [1, 0]));
 
@@ -58,6 +67,7 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 
 	return (
 		<Main
+			ref={ref}
 			initial={{
 				opacity: 0,
 			}}
@@ -69,41 +79,45 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 				},
 			}}
 		>
-			<IcongroupMain>
-				<IconLeftMain
-					initial={{
-						opacity: 0,
-						y: 200,
-						rotate: -90,
-					}}
-					animate={IconsOnPageLoadCont}
-					style={IconsParallaxStyle.Left}
-				>
-					<GiStrikingDiamonds style={{ ...iconStyle, transform: "scaleY(-1) rotate(90deg)" }} />
-				</IconLeftMain>
-				<IconRightMain
-					initial={{
-						opacity: 0,
-						y: 200,
-						rotate: 90,
-					}}
-					animate={IconsOnPageLoadCont}
-					style={IconsParallaxStyle.Right}
-				>
-					<GiStrikingDiamonds style={{ ...iconStyle, transform: "rotate(-90deg)" }} />
-				</IconRightMain>
-			</IcongroupMain>
+			{inView && (
+				<>
+					<IcongroupMain>
+						<IconLeftMain
+							initial={{
+								opacity: 0,
+								y: 200,
+								rotate: -90,
+							}}
+							animate={IconsOnPageLoadCont}
+							style={IconsParallaxStyle.Left}
+						>
+							<GiStrikingDiamonds style={{ ...iconStyle, transform: "scaleY(-1) rotate(90deg)" }} />
+						</IconLeftMain>
+						<IconRightMain
+							initial={{
+								opacity: 0,
+								y: 200,
+								rotate: 90,
+							}}
+							animate={IconsOnPageLoadCont}
+							style={IconsParallaxStyle.Right}
+						>
+							<GiStrikingDiamonds style={{ ...iconStyle, transform: "rotate(-90deg)" }} />
+						</IconRightMain>
+					</IcongroupMain>
 
-			<TitleMain
-				initial={{
-					y: -200,
-					opacity: 0,
-				}}
-				animate={titleMainCont}
-				style={titleMainParallaxStyle}
-			>
-				{title}
-			</TitleMain>
+					<TitleMain
+						initial={{
+							y: -200,
+							opacity: 0,
+						}}
+						animate={titleMainCont}
+						style={titleMainParallaxStyle}
+					>
+						{title}
+					</TitleMain>
+				</>
+			)}
 		</Main>
 	);
 };
@@ -111,12 +125,11 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 //HEROMAINCONTAINER
 const Main = styled(motion.h1)`
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-	/* transition: all 0.3 ease-in-out; */
 `;
 
 //TITLE
