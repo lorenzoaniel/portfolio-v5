@@ -62,7 +62,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    max-width: 100%;
+    max-width: 100vw;
     min-height: fit-content;
     font-size: 62.5%;
     overflow-x: hidden;
