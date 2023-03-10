@@ -19,7 +19,7 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 	const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [0, 1, 0]);
 
 	//ContentIcons
-	const widthContent = useTransform(scrollYProgress, [0, 0.5, 1], ["0vmin", "90vmin", "0vmin"]);
+	const widthContent = useTransform(scrollYProgress, [0, 0.6, 1], ["0%", "100%", "0%"]);
 	let contentParallaxStyle = {
 		width: widthContent,
 	};
@@ -39,31 +39,17 @@ const HomeCrystalContent: React.FC<Props> = ({ data, isLeft = true }) => {
 		//Each variant is paired with a crystal that grows with it
 		<Main ref={ref}>
 			<Content isLeft={isLeft}>
-				{isLeft ? (
-					<>
-						<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
-							<GiCrystalGrowth style={iconStyle(isLeft)} />
-						</Crystal>
+				<>
+					<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
+						<GiCrystalGrowth style={iconStyle(isLeft)} />
+					</Crystal>
 
-						<ContentLeft style={contentParallaxStyle}>
-							<Data isLeft={isLeft} style={dataParallaxStyle}>
-								{data}
-							</Data>
-						</ContentLeft>
-					</>
-				) : (
-					<>
-						<ContentRight style={contentParallaxStyle}>
-							<Data isLeft={isLeft} style={dataParallaxStyle}>
-								{data}
-							</Data>
-						</ContentRight>
-
-						<Crystal isLeft={isLeft} style={crystalParallaxStyle}>
-							<GiCrystalGrowth style={iconStyle(isLeft)} />
-						</Crystal>
-					</>
-				)}
+					<Icon style={contentParallaxStyle}>
+						<Data isLeft={isLeft} style={dataParallaxStyle}>
+							{data}
+						</Data>
+					</Icon>
+				</>
 			</Content>
 		</Main>
 	);
@@ -83,6 +69,7 @@ const Content = styled.div<Content>`
 	display: flex;
 	justify-content: ${(p) => (p.isLeft ? "flex-start" : "flex-end")};
 	align-items: center;
+	padding: 0vmin 11vmin;
 `;
 
 //CRYSTAL GROUP
@@ -112,19 +99,15 @@ interface Content {
 	isLeft: boolean;
 }
 
-const ContentLeft = styled(motion.div)`
+const Icon = styled(motion.div)`
 	height: 95%;
-	padding: 3vmin 15vmin;
+	padding: 3vmin 10vmin;
 	box-shadow: 0 0 0.5rem 0.2rem var(--palette-color-medium);
 	backdrop-filter: blur(0.1rem);
 	justify-self: flex-end;
 	display: flex;
-	justify-content: flex-end;
-	transform: skew(45deg);
-`;
-
-const ContentRight = styled(ContentLeft)`
-	justify-content: flex-start;
+	justify-content: center;
+	transform: skew(20deg);
 `;
 
 interface Data {
@@ -136,11 +119,10 @@ const Data = styled(motion.h2)<Data>`
 	word-break: normal;
 	height: fit-content;
 	width: 23rem;
-	transform: skew(-45deg);
+	transform: skew(-20deg);
 	display: flex;
-	padding: 0 ${(p) => (p.isLeft ? "50%" : "0%")};
-	justify-content: center;
-	justify-content: flex-start;
+	padding: 0 ${(p) => (p.isLeft ? "60vmin" : "0vmin")};
+	/* justify-content: flex-; */
 	align-items: center;
 	text-align: center;
 `;
