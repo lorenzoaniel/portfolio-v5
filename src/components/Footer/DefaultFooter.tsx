@@ -16,6 +16,7 @@ const Main = styled.footer`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 3vmin;
 
 	box-shadow: 0 0 0.5rem 0.2rem var(--palette-color-medium);
 	backdrop-filter: blur(0.1rem);

@@ -35,7 +35,7 @@ const initialState = {
 				github: "https://github.com/lorenzoaniel/portfolio-v4",
 				imgSrc: "/assets/images/static/portfoliov4img.png",
 				link: "http://mikhaillorenzoaniel.surge.sh/",
-				desc: "Fourth version of my portoflio that houses six other learning projects as well as other versions of previous portfolios, currently this site is version 5",
+				desc: "Fourth version of my portfolio that houses six other learning projects as well as other versions of previous portfolios, decided to make a 5th version since version 4 does not run too well on mobile due to the numerous animations",
 			},
 			socialMediaAppDemo: {
 				title: "Social Media App",
