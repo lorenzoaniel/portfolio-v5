@@ -29,8 +29,6 @@ const ProjectContent: React.FC<Props> = ({ title, imgSrc, desc, link, github }) 
 			}}
 		>
 			<SlideUp
-				// {...motionPropsDefault}
-				// variants={_MotionVariants.SlideUp}
 				animate={
 					toggleDisplay ? _MotionVariants.SlideUp.whileHover : _MotionVariants.SlideUp.initial
 				}
