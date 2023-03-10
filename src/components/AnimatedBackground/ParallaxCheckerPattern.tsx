@@ -28,7 +28,7 @@ const ParallaxCheckerPattern: React.FC = () => {
 						key={`Square-${index}`}
 						{...motionPropsDefault}
 						variants={_MotionVariants.Square}
-						style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "8vmin", minHeight: "8vmin" }} //minWidth minHeight is needed so that we dont get some squares with computed width/height = 0
+						style={{ gridArea: `${curr}`, rotate: rotate, minWidth: "12vmin", minHeight: "12vmin" }} //minWidth minHeight is needed so that we dont get some squares with computed width/height = 0
 					/>
 				);
 			})
@@ -45,17 +45,18 @@ const ParallaxCheckerPattern: React.FC = () => {
 const Main = styled(motion.div)`
 	background: transparent;
 	position: fixed;
-	height: 100%; //any other value will break this
-	width: 100%;
+	max-height: 100%;
+	max-width: 100%;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(8vmin, 1fr));
-	grid-template-rows: repeat(auto-fill, minmax(8vmin, 1fr));
+	grid-template-columns: repeat(auto-fill, 12vmin);
+	grid-template-rows: repeat(auto-fill, 12vmin);
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
 `;
 
 /* 
