@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {
 	motion,
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const HeroHeading: React.FC<Props> = ({ title }) => {
+	const [initialLoadView, setInitialLoadView] = useState(true);
 	let ref = useRef(null);
 	let inView = useInView(ref);
 	let { scrollY } = useScroll();
@@ -63,7 +64,8 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 
 	useEffect(() => {
 		MainLoadSeq();
-	}, []);
+		setInitialLoadView(inView); //round about way but lets initial render show component then rely on inView
+	}, [inView]);
 
 	return (
 		<Main
@@ -79,7 +81,7 @@ const HeroHeading: React.FC<Props> = ({ title }) => {
 				},
 			}}
 		>
-			{inView && (
+			{initialLoadView && (
 				<>
 					<IcongroupMain>
 						<IconLeftMain

@@ -12,7 +12,7 @@ const initialState = {
 		Hero: "Hi my name is Lorenzo, feel free to explore around!",
 		Role: "Front-End Developer",
 		AboutMe: {
-			title: "About Me...",
+			title: "About Me",
 			linkedin: {
 				title: "LinkedIn",
 				href: "https://www.linkedin.com/in/mikhail-lorenzo-aniel-283022127/",
@@ -42,7 +42,7 @@ const initialState = {
 				github: "",
 				imgSrc: "/assets/images/static/comingsoonimg.jpg",
 				link: "",
-				desc: "Currently in the works, a fullstack social media app with built in auth and working MongoDB backend",
+				desc: "Currently in the works, a fullstack social media app with built in Authorization and working MongoDB backend",
 			},
 		},
 	},
