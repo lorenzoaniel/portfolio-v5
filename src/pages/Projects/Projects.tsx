@@ -24,6 +24,13 @@ const Projects: React.FC = () => {
 					link={projectsContext.projects.portfolioV4.link}
 				/>
 				<ProjectContent
+					title={projectsContext.projects.notesApp.title}
+					imgSrc={projectsContext.projects.notesApp.imgSrc}
+					desc={projectsContext.projects.notesApp.desc}
+					github={projectsContext.projects.notesApp.github}
+					link={projectsContext.projects.notesApp.link}
+				/>
+				<ProjectContent
 					title={projectsContext.projects.socialMediaAppDemo.title}
 					imgSrc={projectsContext.projects.socialMediaAppDemo.imgSrc}
 					desc={projectsContext.projects.socialMediaAppDemo.desc}
