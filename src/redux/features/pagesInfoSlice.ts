@@ -46,9 +46,9 @@ const initialState = {
 			},
 			weatherApp: {
 				title: "WeatherApp MERN",
-				github: "https://www.mikhaillorenzoaniel.com/",
-				imgSrc: "/assets/images/static/comingsoonimg.png",
-				link: "https://www.mikhaillorenzoaniel.com/",
+				github: "",
+				imgSrc: "/assets/images/static/comingsoonimg.jpg",
+				link: "",
 				desc: "In the works, a weather app pulling data from weatherApi.com as well as authentication and sign up. Lets user add different weather from different locations",
 			},
 		},
