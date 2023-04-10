@@ -17,6 +17,13 @@ const Projects: React.FC = () => {
 			</Header>
 			<Content>
 				<ProjectContent
+					title={projectsContext.projects.capturestudiodemo.title}
+					imgSrc={projectsContext.projects.capturestudiodemo.imgSrc}
+					desc={projectsContext.projects.capturestudiodemo.desc}
+					github={projectsContext.projects.capturestudiodemo.github}
+					link={projectsContext.projects.capturestudiodemo.link}
+				/>
+				<ProjectContent
 					title={projectsContext.projects.portfolioV4.title}
 					imgSrc={projectsContext.projects.portfolioV4.imgSrc}
 					desc={projectsContext.projects.portfolioV4.desc}

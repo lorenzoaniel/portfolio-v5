@@ -30,6 +30,13 @@ const initialState = {
 	Projects: {
 		title: "Projects",
 		projects: {
+			capturestudiodemo: {
+				title: "Capture Studio Demo",
+				github: "https://github.com/lorenzoaniel/capturestudiodemo",
+				imgSrc: "/assets/images/static/capturestudiodemoimg.png",
+				link: "https://capturestudiodemo.surge.sh/",
+				desc: "A Figma Community Sample Design Photography website. I used Styled-Components/Framer/React-Bootstrap for styling, Formik for forms and React-Scroll for SPA navigation. This is simply a design to functional website project. I added Modals and Forms that were not on the original design as well as some sample videos to give the design some life. Responsive even in mobile.",
+			},
 			portfolioV4: {
 				title: "PortfolioV4",
 				github: "https://github.com/lorenzoaniel/portfolio-v4",
