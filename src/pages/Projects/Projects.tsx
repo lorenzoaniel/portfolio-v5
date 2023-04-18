@@ -38,11 +38,11 @@ const Projects: React.FC = () => {
 					link={projectsContext.projects.notesApp.link}
 				/>
 				<ProjectContent
-					title={projectsContext.projects.weatherApp.title}
-					imgSrc={projectsContext.projects.weatherApp.imgSrc}
-					desc={projectsContext.projects.weatherApp.desc}
-					github={projectsContext.projects.weatherApp.github}
-					link={projectsContext.projects.weatherApp.link}
+					title={projectsContext.projects.agecalculatorapp.title}
+					imgSrc={projectsContext.projects.agecalculatorapp.imgSrc}
+					desc={projectsContext.projects.agecalculatorapp.desc}
+					github={projectsContext.projects.agecalculatorapp.github}
+					link={projectsContext.projects.agecalculatorapp.link}
 				/>
 			</Content>
 		</Main>

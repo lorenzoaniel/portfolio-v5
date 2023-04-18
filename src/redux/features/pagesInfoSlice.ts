@@ -51,12 +51,12 @@ const initialState = {
 				link: "https://animated-melba-f0cb96.netlify.app",
 				desc: "An app that lets the user signup/login and perform CRUD operations on simple notes. (Language: Typescript) (Front-end: ReactJS, Framer-Motion, Styled-Components, React-Router, Radix UI for web compliance, RTK (Redux Tool Kit), Yup (form validation)) (Backend: Express, Mongoose(MongoDB manipulation), bcrypt(password hash), envalid/dotenv(env validation), http-errors(http error handling), morgan(dev logging)) (Database: MongoDB) (Cloud Infrastructure: Render (Backend), Netlify (Front-end), Atlas(MongoDB))",
 			},
-			weatherApp: {
-				title: "WeatherApp MERN",
-				github: "",
-				imgSrc: "/assets/images/static/comingsoonimg.jpg",
-				link: "",
-				desc: "In the works, a weather app pulling data from weatherApi.com as well as authentication and sign up. Lets user add different weather from different locations",
+			agecalculatorapp: {
+				title: "Age Calculator App",
+				github: "https://github.com/lorenzoaniel/age_calculator_app",
+				imgSrc: "/assets/images/static/agecalculatorappimg.png",
+				link: "https://lorenzoaniel.github.io/age_calculator_app/",
+				desc: "An age calculator app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
 			},
 		},
 	},
