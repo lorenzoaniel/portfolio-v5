@@ -58,6 +58,13 @@ const initialState = {
 				link: "https://lorenzoaniel.github.io/age_calculator_app/",
 				desc: "An age calculator app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
 			},
+			githubusersearchapp: {
+				title: "Github User Search App",
+				github: "https://github.com/lorenzoaniel/github-user-search-app",
+				imgSrc: "/assets/images/static/githubusersearchappdesktop.png",
+				link: "https://github-user-search-app-lorenzoaniel.vercel.app/",
+				desc: "A github user search app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
+			},
 		},
 	},
 } as infoState;

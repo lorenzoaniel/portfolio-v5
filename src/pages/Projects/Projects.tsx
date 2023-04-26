@@ -44,6 +44,14 @@ const Projects: React.FC = () => {
 					github={projectsContext.projects.agecalculatorapp.github}
 					link={projectsContext.projects.agecalculatorapp.link}
 				/>
+
+				<ProjectContent
+					title={projectsContext.projects.githubusersearchapp.title}
+					imgSrc={projectsContext.projects.githubusersearchapp.imgSrc}
+					desc={projectsContext.projects.githubusersearchapp.desc}
+					github={projectsContext.projects.githubusersearchapp.github}
+					link={projectsContext.projects.githubusersearchapp.link}
+				/>
 			</Content>
 		</Main>
 	);
