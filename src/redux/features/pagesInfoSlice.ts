@@ -65,6 +65,13 @@ const initialState = {
 				link: "https://github-user-search-app-lorenzoaniel.vercel.app/",
 				desc: "A github user search app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
 			},
+			dictionaryapp: {
+				title: "Dictionary Search App",
+				github: "https://github.com/lorenzoaniel/dictionary-web-app",
+				imgSrc: "/assets/images/static/Dictionary_Web_App_Default.png",
+				link: "https://dictionary-web-app-lorenzoaniel.vercel.app/",
+				desc: "Dictionary app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
+			},
 		},
 	},
 } as infoState;
