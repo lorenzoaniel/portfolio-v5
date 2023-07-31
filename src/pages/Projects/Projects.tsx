@@ -17,6 +17,34 @@ const Projects: React.FC = () => {
 			</Header>
 			<Content>
 				<ProjectContent
+					title={projectsContext.projects.githubusersearchapp.title}
+					imgSrc={projectsContext.projects.githubusersearchapp.imgSrc}
+					desc={projectsContext.projects.githubusersearchapp.desc}
+					github={projectsContext.projects.githubusersearchapp.github}
+					link={projectsContext.projects.githubusersearchapp.link}
+				/>
+				<ProjectContent
+					title={projectsContext.projects.tictactoeapp.title}
+					imgSrc={projectsContext.projects.tictactoeapp.imgSrc}
+					desc={projectsContext.projects.tictactoeapp.desc}
+					github={projectsContext.projects.tictactoeapp.github}
+					link={projectsContext.projects.tictactoeapp.link}
+				/>
+				<ProjectContent
+					title={projectsContext.projects.notesApp.title}
+					imgSrc={projectsContext.projects.notesApp.imgSrc}
+					desc={projectsContext.projects.notesApp.desc}
+					github={projectsContext.projects.notesApp.github}
+					link={projectsContext.projects.notesApp.link}
+				/>
+				<ProjectContent
+					title={projectsContext.projects.dictionaryapp.title}
+					imgSrc={projectsContext.projects.dictionaryapp.imgSrc}
+					desc={projectsContext.projects.dictionaryapp.desc}
+					github={projectsContext.projects.dictionaryapp.github}
+					link={projectsContext.projects.dictionaryapp.link}
+				/>
+				<ProjectContent
 					title={projectsContext.projects.capturestudiodemo.title}
 					imgSrc={projectsContext.projects.capturestudiodemo.imgSrc}
 					desc={projectsContext.projects.capturestudiodemo.desc}
@@ -31,34 +59,11 @@ const Projects: React.FC = () => {
 					link={projectsContext.projects.portfolioV4.link}
 				/>
 				<ProjectContent
-					title={projectsContext.projects.notesApp.title}
-					imgSrc={projectsContext.projects.notesApp.imgSrc}
-					desc={projectsContext.projects.notesApp.desc}
-					github={projectsContext.projects.notesApp.github}
-					link={projectsContext.projects.notesApp.link}
-				/>
-				<ProjectContent
 					title={projectsContext.projects.agecalculatorapp.title}
 					imgSrc={projectsContext.projects.agecalculatorapp.imgSrc}
 					desc={projectsContext.projects.agecalculatorapp.desc}
 					github={projectsContext.projects.agecalculatorapp.github}
 					link={projectsContext.projects.agecalculatorapp.link}
-				/>
-
-				<ProjectContent
-					title={projectsContext.projects.githubusersearchapp.title}
-					imgSrc={projectsContext.projects.githubusersearchapp.imgSrc}
-					desc={projectsContext.projects.githubusersearchapp.desc}
-					github={projectsContext.projects.githubusersearchapp.github}
-					link={projectsContext.projects.githubusersearchapp.link}
-				/>
-
-				<ProjectContent
-					title={projectsContext.projects.dictionaryapp.title}
-					imgSrc={projectsContext.projects.dictionaryapp.imgSrc}
-					desc={projectsContext.projects.dictionaryapp.desc}
-					github={projectsContext.projects.dictionaryapp.github}
-					link={projectsContext.projects.dictionaryapp.link}
 				/>
 			</Content>
 		</Main>

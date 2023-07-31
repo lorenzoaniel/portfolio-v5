@@ -72,6 +72,13 @@ const initialState = {
 				link: "https://dictionary-web-app-lorenzoaniel.vercel.app/",
 				desc: "Dictionary app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
 			},
+			tictactoeapp: {
+				title: "Tic Tac Toe App",
+				github: "https://github.com/lorenzoaniel/tic-tac-toe-app",
+				imgSrc: "/assets/images/static/tic-tac-toe-menu.jpg",
+				link: "https://tic-tac-toe-app-lorenzoaniel.vercel.app/",
+				desc: "Tic Tac Toe app design challenge from Front-End Mentor. https://www.frontendmentor.io/profile/lorenzoaniel for more details",
+			},
 		},
 	},
 } as infoState;
